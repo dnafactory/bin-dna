@@ -1,0 +1,42 @@
+<?php
+
+return [
+    'root' => [
+        'driver' => 'mysql',
+        'name' => 'Connessione di Root',
+        'host' => 'db',
+        'port' => '3306',
+        'database' => 'db',
+        'username' => 'root',
+        'password' => 'DNAsecret1234',
+        'unix_socket' => '',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'prefix_indexes' => true,
+        'strict' => true,
+        'engine' => null,
+        'options' => extension_loaded('pdo_mysql') ? array_filter([
+            PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        ]) : [],
+    ],
+    'magento' => [
+        'driver' => 'mysql',
+        'name' => 'Connessione di Magento',
+        'host' => 'db',
+        'port' => '3306',
+        'database' => 'db',
+        'username' => 'dna',
+        'password' => 'DNAsecret1234',
+        'unix_socket' => '',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'prefix_indexes' => true,
+        'strict' => true,
+        'engine' => null,
+        'options' => extension_loaded('pdo_mysql') ? array_filter([
+            PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+        ]) : [],
+    ],
+];
