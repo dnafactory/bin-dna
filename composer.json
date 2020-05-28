@@ -1,12 +1,19 @@
 {
-    "name": "laravel/laravel",
+    "name": "dnafactory/bin-dna",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Yet another System ToolKit",
     "keywords": [
-        "framework",
-        "laravel"
+        "barabla",
+        "dnafactory"
     ],
-    "license": "MIT",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Daniel Russo",
+            "email": "daniel@dnafactory.it",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^7.2",
         "dnafactory/laravel-modular": "^1.4",
