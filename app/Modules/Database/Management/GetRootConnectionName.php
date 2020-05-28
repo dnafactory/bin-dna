@@ -3,10 +3,10 @@
 namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\GetAvailableConnectionsInterface;
-use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GetRootConnectionNameInterface;
 use Illuminate\Support\Facades\DB;
 
-class GetRootDatabaseName implements GetRootDatabaseNameInterface
+class GetRootConnectionName implements GetRootConnectionNameInterface
 {
     public function execute(): string
     {

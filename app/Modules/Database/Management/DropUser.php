@@ -4,21 +4,21 @@ namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\DropDatabaseInterface;
 use App\Modules\Database\Api\DropUserInterface;
-use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GetRootConnectionNameInterface;
 use Illuminate\Support\Facades\DB;
 
 class DropUser implements DropUserInterface
 {
-    private $rootDatabaseName;
+    private $rootConnectionName;
 
-    public function __construct(GetRootDatabaseNameInterface $rootDatabaseName)
+    public function __construct(GetRootConnectionNameInterface $rootConnectionName)
     {
-        $this->rootDatabaseName = $rootDatabaseName;
+        $this->rootConnectionName = $rootConnectionName;
     }
 
     public function execute(string $username, string $connection = 'localhost')
     {
-        $rootDatabaseName = $this->rootDatabaseName->execute();
-        DB::connection($rootDatabaseName)->statement("DROP USER '$username'@'$connection';");
+        $rootConnectionName = $this->rootConnectionName->execute();
+        DB::connection($rootConnectionName)->statement("DROP USER '$username'@'$connection';");
     }
 }

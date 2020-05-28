@@ -2,7 +2,7 @@
 
 namespace App\Modules\Database\Api;
 
-interface GetRootDatabaseNameInterface
+interface GetRootConnectionNameInterface
 {
     public function execute(): string;
 }

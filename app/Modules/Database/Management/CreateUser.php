@@ -3,22 +3,22 @@
 namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\CreateUserInterface;
-use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GetRootConnectionNameInterface;
 use Illuminate\Support\Facades\DB;
 
 class CreateUser implements CreateUserInterface
 {
-    private $rootDatabaseName;
+    private $rootConnectionName;
 
-    public function __construct(GetRootDatabaseNameInterface $rootDatabaseName)
+    public function __construct(GetRootConnectionNameInterface $rootConnectionName)
     {
-        $this->rootDatabaseName = $rootDatabaseName;
+        $this->rootConnectionName = $rootConnectionName;
     }
 
     public function execute(string $username, string $password, string $connection = 'localhost')
     {
-        $rootDatabaseName = $this->rootDatabaseName->execute();
-        DB::connection($rootDatabaseName)->statement("CREATE USER '$username'@'$connection' IDENTIFIED BY '$password';");
-        DB::connection($rootDatabaseName)->statement("FLUSH PRIVILEGES;");
+        $rootConnectionName = $this->rootConnectionName->execute();
+        DB::connection($rootConnectionName)->statement("CREATE USER '$username'@'$connection' IDENTIFIED BY '$password';");
+        DB::connection($rootConnectionName)->statement("FLUSH PRIVILEGES;");
     }
 }

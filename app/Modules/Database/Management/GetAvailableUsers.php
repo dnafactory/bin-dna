@@ -3,22 +3,22 @@
 namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\GetAvailableUsersInterface;
-use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GetRootConnectionNameInterface;
 use Illuminate\Support\Facades\DB;
 
 class GetAvailableUsers implements GetAvailableUsersInterface
 {
-    private $rootDatabaseName;
+    private $rootConnectionName;
 
-    public function __construct(GetRootDatabaseNameInterface $rootDatabaseName)
+    public function __construct(GetRootConnectionNameInterface $rootConnectionName)
     {
-        $this->rootDatabaseName = $rootDatabaseName;
+        $this->rootConnectionName = $rootConnectionName;
     }
 
     public function execute(): array
     {
-        $rootDatabaseName = $this->rootDatabaseName->execute();
-        $users = DB::connection($rootDatabaseName)->select("SELECT user, host FROM mysql.user");
+        $rootConnectionName = $this->rootConnectionName->execute();
+        $users = DB::connection($rootConnectionName)->select("SELECT user, host FROM mysql.user");
         return json_decode(json_encode($users), true);
     }
 }

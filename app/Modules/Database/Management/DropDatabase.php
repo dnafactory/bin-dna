@@ -3,21 +3,21 @@
 namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\DropDatabaseInterface;
-use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GetRootConnectionNameInterface;
 use Illuminate\Support\Facades\DB;
 
 class DropDatabase implements DropDatabaseInterface
 {
-    private $rootDatabaseName;
+    private $rootConnectionName;
 
-    public function __construct(GetRootDatabaseNameInterface $rootDatabaseName)
+    public function __construct(GetRootConnectionNameInterface $rootConnectionName)
     {
-        $this->rootDatabaseName = $rootDatabaseName;
+        $this->rootConnectionName = $rootConnectionName;
     }
 
     public function execute(string $dbname)
     {
-        $rootDatabaseName = $this->rootDatabaseName->execute();
-        DB::connection($rootDatabaseName)->statement("DROP DATABASE $dbname");
+        $rootConnectionName = $this->rootConnectionName->execute();
+        DB::connection($rootConnectionName)->statement("DROP DATABASE $dbname");
     }
 }
