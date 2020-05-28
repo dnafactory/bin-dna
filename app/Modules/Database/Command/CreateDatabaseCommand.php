@@ -52,7 +52,7 @@ class CreateDatabaseCommand extends Command
             $createDatabase->execute($dbname);
             $this->output->writeln('<info>Database creato con successo: ' . $dbname . '</info>');
         } catch (\Exception $e) {
-            $this->output->writeln('<info>Database già esistente: ' . $dbname . '</info>');
+            $this->output->writeln('<error>Database già esistente: ' . $dbname . '</error>');
         }
 
         try {
@@ -61,7 +61,7 @@ class CreateDatabaseCommand extends Command
             $this->output->writeln('<info>Utente creato con successo: ' . $username . '</info>');
             $this->output->writeln('<info>Password autogenerata: ' . $password . '</info>');
         } catch (\Exception $e) {
-            $this->output->writeln('<info>Utente già esistente: ' . $username . '</info>');
+            $this->output->writeln('<error>Utente già esistente: ' . $username . '</error>');
         }
 
         try {
