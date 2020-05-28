@@ -24,7 +24,7 @@ class CompressFolderWithTarGz implements CompressFolderWithTarGzInterface
         }
 
         $process = new Process($command);
-        $process->setTimeout(3600);
+        $process->setTimeout(36000);
         $process->run();
 
         if (!$process->isSuccessful()) {
