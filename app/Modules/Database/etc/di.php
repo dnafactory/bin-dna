@@ -8,6 +8,7 @@ use App\Modules\Database\Api\GetAvailableConnectionsInterface;
 use App\Modules\Database\Api\GetAvailableDatabasesInterface;
 use App\Modules\Database\Api\GetAvailableUsersInterface;
 use App\Modules\Database\Api\GetRootDatabaseNameInterface;
+use App\Modules\Database\Api\GrantPermissionInterface;
 use App\Modules\Database\Management\CreateDatabase;
 use App\Modules\Database\Management\CreateUser;
 use App\Modules\Database\Management\DropDatabase;
@@ -16,6 +17,7 @@ use App\Modules\Database\Management\GetAvailableConnections;
 use App\Modules\Database\Management\GetAvailableDatabases;
 use App\Modules\Database\Management\GetAvailableUsers;
 use App\Modules\Database\Management\GetRootDatabaseName;
+use App\Modules\Database\Management\GrantPermission;
 
 return [
     'bind' => [
@@ -33,5 +35,7 @@ return [
 
         CreateUserInterface::class => CreateUser::class,
         CreateDatabaseInterface::class => CreateDatabase::class,
+
+        GrantPermissionInterface::class => GrantPermission::class
     ]
 ];

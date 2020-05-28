@@ -3,12 +3,12 @@
 namespace App\Modules\Database\Management;
 
 use App\Modules\Database\Api\GetAvailableConnectionsInterface;
+use Illuminate\Support\Facades\DB;
 
 class GetAvailableConnections implements GetAvailableConnectionsInterface
 {
     public function execute(): array
     {
-        $connections = config('database.connections');
-        return $connections;
+        return config('database.connections');
     }
 }
