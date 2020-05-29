@@ -13,5 +13,10 @@ yarn-error.log
 
 composer.lock
 
+backups
+!backups/.gitkeep
+
 envs/connections.php
+envs/cmsroots.php
+envs/disks.php
 envs/me.php

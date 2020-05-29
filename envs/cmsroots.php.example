@@ -1,0 +1,21 @@
+<?php
+
+return [
+    'magento_prod' => [
+        'name' => 'Magento1 Produzione',
+        'path' => '/var/www/html',
+        'connection' => 'magento',
+        'disks' => [
+            'magento_local',
+            'magento_sftp'
+        ],
+        'keep_backups' => 5,
+        'excludes' =>
+            [
+                'media',
+                'app/code/core',
+                'var/log'
+            ],
+        'php_version' => 'php7.2'
+    ],
+];

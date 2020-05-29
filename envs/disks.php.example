@@ -1,0 +1,20 @@
+<?php
+
+return [
+    'magento_local' => [
+        'driver' => 'local',
+        'root' => '/var/www/backups',
+    ],
+    'magento_sftp' => [
+        'driver' => 'sftp',
+        'host' => '127.0.0.1',
+        'username' => 'root',
+        'password' => 'root',
+        'port' => 22,
+        'root' => '/',
+        'passive' => true,
+        'ssl' => true,
+        'timeout' => 30,
+        'ignorePassiveAddress' => false,
+    ],
+];
