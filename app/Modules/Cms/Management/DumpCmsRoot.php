@@ -32,6 +32,14 @@ class DumpCmsRoot implements DumpCmsRootInterface
      */
     private $dbFullFilename;
     /**
+     * @var string
+     */
+    private $filesFilename;
+    /**
+     * @var string
+     */
+    private $filesFullFilename;
+    /**
      * @var GetCmsRootInterface
      */
     private $getCmsRoot;
@@ -83,12 +91,24 @@ class DumpCmsRoot implements DumpCmsRootInterface
 
     private function dumpCms()
     {
+        $this->filesFilename = 'dump-files.tar.gz';
+        $this->filesFilename = $this->prependCurrentTimeToFilename->execute($this->filesFilename);
 
+        $this->filesFullFilename = $this->temporaryDirectory->path($this->filesFilename);
+
+        $this->compressFolderWithTarGz->execute(
+            $this->cmsRoot['path'],
+            $this->filesFullFilename
+        );
     }
 
     private function copyCmsToDisks()
     {
+        foreach ($this->cmsRoot['disks'] as $disk) {
+            $filesystem = $this->getDisk->execute($disk);
 
+            $filesystem->putFileAs('/', new File($this->filesFullFilename), $this->filesFilename);
+        }
     }
 
     private function copyDatabaseToDisks()
