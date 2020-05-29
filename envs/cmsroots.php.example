@@ -9,6 +9,7 @@ return [
             'magento_local',
             'magento_sftp'
         ],
+        'tmp_directory' => '/var/www/tmp',
         'keep_backups' => 5,
         'excludes' =>
             [

@@ -27,21 +27,23 @@ class DumpDatabaseByConnection implements DumpDatabaseByConnectionInterface
 
     public function execute(
         string $connectionName,
-        string $dbname,
         string $filename,
-        array $excludeTables = [],
-        array $includeTables = [],
-        bool $compress = false
+        bool $compress = false,
+        string $dbname = null
     ) {
         $connection = $this->getConnection->execute($connectionName);
+
+        if ($dbname === null) {
+            $dbname = $connection['database'];
+        }
 
         $this->dumpDatabase->execute(
             $dbname,
             $connection['username'],
             $connection['password'],
             $filename,
-            $excludeTables,
-            $includeTables,
+            $connection['exclude_tables'],
+            $connection['include_tables'],
             $compress,
             $connection['host']
         );

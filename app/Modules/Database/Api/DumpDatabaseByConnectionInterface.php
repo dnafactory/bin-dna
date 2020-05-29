@@ -6,10 +6,8 @@ interface DumpDatabaseByConnectionInterface
 {
     public function execute(
         string $connectionName,
-        string $dbname,
         string $filename,
-        array $excludeTables = [],
-        array $includeTables = [],
-        bool $compress = false
+        bool $compress = false,
+        string $dbname = null
     );
 }
