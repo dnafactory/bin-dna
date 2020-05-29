@@ -14,6 +14,11 @@ Under development
 
 ## Command list
 
+### Command on CMS
+
+`dna cms:dump:root rootName`  
+`dna cms:show:roots`  
+
 ### Command on DataBase
 
 `dna db:create:database dbname username`  
